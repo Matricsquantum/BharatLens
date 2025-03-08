@@ -9,7 +9,8 @@ app = FastAPI()
 # CORS Configuration
 origins = [
     "http://localhost:3000",  # Local frontend
-    "https://erp-platform-4529dk62l-matricsquantums-projects.vercel.app",  # Deployed frontend (update with actual URL if different)
+    "https://erp-platform-4529dk62l-matricsquantums-projects.vercel.app",  # Deployed frontend
+    "https://erp-platform-2qfpo5do7-matricsquantums-projects.vercel.app",  # Additional Vercel URL from remote
 ]
 
 app.add_middleware(
