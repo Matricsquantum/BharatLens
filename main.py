@@ -6,6 +6,7 @@ import os
 
 app = FastAPI()
 
+<<<<<<< HEAD
 # CORS Configuration
 origins = [
     "http://localhost:3000",  # Local frontend
@@ -16,6 +17,11 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+=======
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://erp-platform-2qfpo5do7-matricsquantums-projects.vercel.app"],
+>>>>>>> 598eb216c8b4ec360e58d4bf8c51f64dfbfc897f
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
@@ -44,6 +50,7 @@ orders = [
 
 # Endpoints
 @app.get("/")
+<<<<<<< HEAD
 async def root():
     return {"message": "Hello from ERP Backend"}
 
@@ -68,3 +75,16 @@ async def place_order(order: OrderItem):
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))  # Use Render's PORT or 8000 locally
     uvicorn.run(app, host="0.0.0.0", port=port)
+=======
+async def read_root():
+    return {"message": "Hello from ERP Backend"}
+
+# Placeholder endpoints (to be expanded)
+@app.get("/items")
+async def get_items():
+    return {"items": [{"id": 1, "name": "Item 1", "quantity": 10}]}
+
+@app.post("/add-item")
+async def add_item(name: str, qty: int):
+    return {"message": f"Added {name} with quantity {qty}"}
+>>>>>>> 598eb216c8b4ec360e58d4bf8c51f64dfbfc897f
