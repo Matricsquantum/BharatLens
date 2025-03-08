@@ -3,19 +3,23 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for testing (restrict to erp-platform-a.vercel.app later for security)
+    allow_origins=["https://erp-platform-2qfpo5do7-matricsquantums-projects.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 @app.get("/")
-async def root():
-    return {"message": "ERP Backend Ready"}
+async def read_root():
+    return {"message": "Hello from ERP Backend"}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Placeholder endpoints (to be expanded)
+@app.get("/items")
+async def get_items():
+    return {"items": [{"id": 1, "name": "Item 1", "quantity": 10}]}
+
+@app.post("/add-item")
+async def add_item(name: str, qty: int):
+    return {"message": f"Added {name} with quantity {qty}"}
